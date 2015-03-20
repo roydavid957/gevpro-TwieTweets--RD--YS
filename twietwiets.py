@@ -5,44 +5,39 @@
 import sys
 from PyQt4 import QtGui, QtCore 
 import random
-from collections import Counter
 
-class twietwiets(QtGui.QWidget):
-	def __init__(self, argv):
+class twietwiets():
+	def __init__(self):
 		super(twietwiets, self).__init__()
-		self.setWindowTitle("TwieTwiets")
-		self.setGeometry(400, 400, 400, 400)
-		self.tweetsfile = open(argv[1])
-		self.initUI()
+		self.tweetfile = open("tweets.txt", "r")
+		self.pronfile = open("dpw.cd", "r")
+		self.create_prondict()
+		self.get_usable_tweets()
 		
-	def initUI(self):
-		self.grid = QtGui.QGridLayout()
-		self.tweetLabel = QtGui.QLabel()
-		self.tweetButton = QtGui.QPushButton("Tweet", self)
-		self.tweetButton.clicked.connect(self.buttonPushed)
-		self.grid.addWidget(self.tweetLabel, 1, 0)
-		self.grid.addWidget(self.tweetButton, 1, 4)
+	def create_prondict(self):
+		pronlist = []
+		prondict = {}
+		for line in self.pronfile:
+			pronlist.append(line.split("\\"))
+		for pron_word in pronlist:
+			key = pron_word[1]
+			value = pron_word[3]
+			prondict[key] = value
+		return prondict
 		
-		
-	def buttonPushed(self):
-		source = self.sender()
-		if source.text() == "Tweet":
-			for tweet in self.get_tweets():
-				self.grid.addWidget(QtGui.QLabel(str(tweet)))
-		self.setLayout(self.grid)
-			#self.tweetLabel.setText(tweets.inputTweet())
-			
-	def get_tweets(self):
-		tweets = []
-		for line in self.tweetsfile:
-			tweets.append(line.split("\n"))
-		return random.choice(tweets)
-		
-	#def clean_tweets(self):
-		#for tweet in self.get_tweets():	
-		
+	def get_usable_tweets(self):
+		tweetlist = []
+		last_word = []
+		usable_tweetlist = []
+		for line in self.tweetfile:
+			tweetlist.append(line.split())
+		for tweet in tweetlist:
+			last_word.append(tweet[-1])
+		for word in last_word:
+			if word in self.create_prondict():#dit werkt niet, hij slaat dit over of
+				usable_tweetlist.append(tweet)#krijgt niets terug, print lege lijst
+		print(usable_tweetlist)
+
+				
 if __name__ == "__main__":
-	app = QtGui.QApplication(sys.argv)
-	twiets = twietwiets(sys.argv)
-	twiets.show()
-	app.exec_()
+	twietwiets()
