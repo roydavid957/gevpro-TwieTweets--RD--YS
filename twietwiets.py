@@ -37,6 +37,14 @@ class twietwiets():
 			if word in self.prondict:
 				self.usable_tweetlist.append(tweet)#gaat niet door naar volgende tweet
 		print(self.usable_tweetlist)#print aldoor dezelfde tweet
+		"""for line in self.tweetfile:
+			tweetlist.append(line.split())
+			for tweet in tweetlist:
+				last_word.append(tweet[-1])
+				for word in last_word:
+					if word in self.prondict:
+						self.usable_tweetlist.append(tweet)#gaat niet door naar volgende tweet
+		print(self.usable_tweetlist)#print aldoor dezelfde tweet"""#dit ook al geprobeerd, programma blijft dan hangen, print niets
 
 				
 if __name__ == "__main__":
