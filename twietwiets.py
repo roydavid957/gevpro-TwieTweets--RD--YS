@@ -16,27 +16,27 @@ class twietwiets():
 		
 	def create_prondict(self):
 		pronlist = []
-		prondict = {}
+		self.prondict = {}
 		for line in self.pronfile:
 			pronlist.append(line.split("\\"))
 		for pron_word in pronlist:
 			key = pron_word[1]
 			value = pron_word[3]
-			prondict[key] = value
-		return prondict
+			self.prondict[key] = value
+		return self.prondict
 		
 	def get_usable_tweets(self):
 		tweetlist = []
 		last_word = []
-		usable_tweetlist = []
+		self.usable_tweetlist = []
 		for line in self.tweetfile:
 			tweetlist.append(line.split())
 		for tweet in tweetlist:
 			last_word.append(tweet[-1])
 		for word in last_word:
-			if word in self.create_prondict():#dit werkt niet, hij slaat dit over of
-				usable_tweetlist.append(tweet)#krijgt niets terug, print lege lijst
-		print(usable_tweetlist)
+			if word in self.prondict:
+				self.usable_tweetlist.append(tweet)#gaat niet door naar volgende tweet
+		print(self.usable_tweetlist)#print aldoor dezelfde tweet
 
 				
 if __name__ == "__main__":
