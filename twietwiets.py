@@ -13,6 +13,7 @@ class twietwiets():
 		self.pronfile = open("dpw.cd", "r")
 		self.create_prondict()
 		self.get_usable_tweets()
+		self.get_twietwiet()
 		
 	def create_prondict(self):
 		pronlist = []
@@ -27,25 +28,40 @@ class twietwiets():
 		
 	def get_usable_tweets(self):
 		tweetlist = []
-		last_word = []
 		self.usable_tweetlist = []
 		for line in self.tweetfile:
 			tweetlist.append(line.split())
 		for tweet in tweetlist:
-			last_word.append(tweet[-1])
-		for word in last_word:
-			if word in self.prondict:
-				self.usable_tweetlist.append(tweet)#gaat niet door naar volgende tweet
-		print(self.usable_tweetlist)#print aldoor dezelfde tweet
-		"""for line in self.tweetfile:
-			tweetlist.append(line.split())
-			for tweet in tweetlist:
-				last_word.append(tweet[-1])
-				for word in last_word:
-					if word in self.prondict:
-						self.usable_tweetlist.append(tweet)#gaat niet door naar volgende tweet
-		print(self.usable_tweetlist)#print aldoor dezelfde tweet"""#dit ook al geprobeerd, programma blijft dan hangen, print niets
-
-				
+			if tweet[-1] in self.prondict:
+				self.usable_tweetlist.append(tweet)
+		return self.usable_tweetlist
+		
+	def get_twietwiet(self):
+		tweetdict = {}
+		twietwiet = []
+		for tweet in self.usable_tweetlist:
+			key = tweet[-1]
+			value = self.prondict.get(key, 'unknown')
+			tweetdict[key] = value
+		tweet1 = random.choice(self.usable_tweetlist)
+		tweet2 = random.choice(self.usable_tweetlist)
+		tweet1_value = tweetdict.get(tweet1[-1], 'unknown')
+		tweet1_value = tweet1_value.strip("'")
+		tweet2_value = tweetdict.get(tweet2[-1], 'unknown')
+		tweet2_value = tweet2_value.strip("'")
+		#probeer de tweet op te zoeken waarvan het laatste woord dezelfde value heeft als
+		#de eerste tweet (tweet1). Blijft alleen hangen in regel 57, 58 (else:
+		#tweet2 = random...) 
+		while twietwiet == []:
+			if tweet2 != tweet1:		
+				if tweet2_value[1:] == tweet1_value[1:]:
+					twietwiet.append(tweet1)
+					twietwiet.append(tweet2)
+				else:
+					tweet2 = random.choice(self.usable_tweetlist)
+			else:
+				tweet2 = random.choice(self.usable_tweetlist)
+		print(twietwiet)
+		
 if __name__ == "__main__":
 	twietwiets()
