@@ -7,8 +7,10 @@ from PyQt4 import QtGui, QtCore
 import random
 
 class twietwiets():
+    """This program creates twietwiets from tweet.txt using dpw.cd
+    (a dutch pronounciation dictionairy)"""
     def __init__(self):
-        super(twietwiets, self).__init__()
+        #super(twietwiets, self).__init__()
         self.tweetfile = open("tweets.txt", "r")
         self.pronfile = open("dpw.cd", "r")
         self.create_prondict()
@@ -60,6 +62,7 @@ class twietwiets():
                     tweet2 = random.choice(self.usable_tweetlist)
             else:
                 tweet2 = random.choice(self.usable_tweetlist)
+        print(self.twietwiet)        
         return self.twietwiet
 		
 if __name__ == "__main__":
