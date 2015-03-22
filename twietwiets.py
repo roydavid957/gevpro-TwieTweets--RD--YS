@@ -49,12 +49,18 @@ class twietwiets():
 			tweet1_value = tweetdict.get(tweet1[-1], 'unknown')
 			tweet1_value = tweet1_value.strip("'")
 			tweet2_value = tweetdict.get(tweet2[-1], 'unknown')
-			tweet2_value = tweet2_value.strip("'") 
-			if tweet2 != tweet1:		
+			tweet2_value = tweet2_value.strip("'")
+			#als ik dat if en else statement toevoeg heb ik niet meer dat je
+			#2 tweets krijgt met hetzelfde laatste woord, maar dan krijg ik woorden
+			#die maar deels rijmen 
+			if tweet2 != tweet1:
+				#if tweet2_value != tweet1_value:	
 				if tweet2_value[1:] == tweet1_value[1:]:
 					twietwiet.append(tweet1)
 					twietwiet.append(tweet2)
 				else:
+					tweet2 = random.choice(self.usable_tweetlist)
+				#else:
 					tweet2 = random.choice(self.usable_tweetlist)
 			else:
 				tweet2 = random.choice(self.usable_tweetlist)
