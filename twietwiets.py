@@ -43,16 +43,13 @@ class twietwiets():
 			key = tweet[-1]
 			value = self.prondict.get(key, 'unknown')
 			tweetdict[key] = value
-		tweet1 = random.choice(self.usable_tweetlist)
-		tweet2 = random.choice(self.usable_tweetlist)
-		tweet1_value = tweetdict.get(tweet1[-1], 'unknown')
-		tweet1_value = tweet1_value.strip("'")
-		tweet2_value = tweetdict.get(tweet2[-1], 'unknown')
-		tweet2_value = tweet2_value.strip("'")
-		#probeer de tweet op te zoeken waarvan het laatste woord dezelfde value heeft als
-		#de eerste tweet (tweet1). Blijft alleen hangen in regel 57, 58 (else:
-		#tweet2 = random...) 
 		while twietwiet == []:
+			tweet1 = random.choice(self.usable_tweetlist)
+			tweet2 = random.choice(self.usable_tweetlist)
+			tweet1_value = tweetdict.get(tweet1[-1], 'unknown')
+			tweet1_value = tweet1_value.strip("'")
+			tweet2_value = tweetdict.get(tweet2[-1], 'unknown')
+			tweet2_value = tweet2_value.strip("'") 
 			if tweet2 != tweet1:		
 				if tweet2_value[1:] == tweet1_value[1:]:
 					twietwiet.append(tweet1)
