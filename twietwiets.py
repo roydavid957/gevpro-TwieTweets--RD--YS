@@ -61,8 +61,7 @@ class twietwiets():
                 else:
                     tweet2 = random.choice(self.usable_tweetlist)
             else:
-                tweet2 = random.choice(self.usable_tweetlist)
-        print(self.twietwiet)        
+                tweet2 = random.choice(self.usable_tweetlist)        
         return self.twietwiet
 		
 if __name__ == "__main__":
