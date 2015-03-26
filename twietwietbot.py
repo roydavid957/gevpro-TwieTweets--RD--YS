@@ -1,6 +1,14 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
+"""
+Aanroep:
+installeer pip en tweepy.
+kopieer de mappen pip, tweepy en six.1.9... en het bestand six.py
+naar dezelfde map waar twietwietbot ook in zit.
+roep aan met ./twietwietbot.py
+"""
+
 import tweepy, time, sys, twietwiets
 
 CONSUMER_KEY = 'XPkqjxqIOx8IKifTWPnEi8coU'
@@ -23,6 +31,8 @@ while 1 > 0:
     print(tweet)
     if len(tweet) <= 140:
         api.update_status(status=tweet)
+        """tijd is in seconden, verander simpelweg door 3600 te veranderen naar de tijd
+        die je liever hebt"""
         time.sleep(3600)
     else:
         twietwiet = twieTweet.get_twietwiet()
