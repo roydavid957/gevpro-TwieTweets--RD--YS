@@ -24,7 +24,7 @@ class twietwiets():
         self.get_twietwiet()
         
     def create_prondict(self):
-		"""returned dictionairy met alle woorden + de uitspraak van die woorden"""
+        """returned dictionairy met alle woorden + de uitspraak van die woorden"""
         pronlist = []
         self.prondict = {}
         for line in self.pronfile:
@@ -36,7 +36,7 @@ class twietwiets():
         return self.prondict
 		
     def get_usable_tweets(self):
-		"""returned lijst met bruikbare tweets"""
+        """returned lijst met bruikbare tweets"""
         tweetlist = []
         self.usable_tweetlist = []
         for line in self.tweetfile:
@@ -47,7 +47,7 @@ class twietwiets():
         return self.usable_tweetlist
 		
     def get_twietwiet(self):
-		"""returned lijst met twietwiet"""
+        """returned lijst met twietwiet"""
         tweetdict = {}
         self.twietwiet = []
         for tweet in self.usable_tweetlist:
