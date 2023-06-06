@@ -10,13 +10,10 @@ roep aan met ./twietwietbot.py
 """
 
 import tweepy, time, sys, twietwiets
+import twitter_cfg as cfg
 
-CONSUMER_KEY = 'XPkqjxqIOx8IKifTWPnEi8coU'
-CONSUMER_SECRET = 'cBQeVEcNOUlztwyDVnqo4y7nBvvdm3s0iMZ83NBXIroqWeIkcF'
-ACCESS_KEY = '3115005287-qmh9xd4wXXqftCxyf1BHW7oRvQHcUKDwTmU6BCo'
-ACCESS_SECRET = 'JSn387CHzXcN99iBvXbADGvR51pTQpmYD2w2Rvz9gDydZ'
-auth = tweepy.OAuthHandler(CONSUMER_KEY, CONSUMER_SECRET)
-auth.set_access_token(ACCESS_KEY, ACCESS_SECRET)
+auth = tweepy.OAuthHandler(cfg.CONSUMER_KEY, cfg.CONSUMER_SECRET)
+auth.set_access_token(cfg.ACCESS_KEY, cfg.ACCESS_SECRET)
 api = tweepy.API(auth)
 
 """Van het groepje: TweetMe overgenomen"""
